@@ -1,5 +1,5 @@
 import {atualizaDocumento, encontrarDocumento, excluirDocumento} from "../db/documentosDb.js";
-function registrarEventosDocumentos(socket, io){
+function registrarEventosDocumento(socket, io){
     socket.on("selecionar_documento", async (nomeDocumento, devolverTexto) => {
         socket.join(nomeDocumento);
         const documento = await encontrarDocumento(nomeDocumento);
@@ -22,4 +22,4 @@ function registrarEventosDocumentos(socket, io){
         }
       });
 }
-export default registrarEventosDocumentos;
+export default registrarEventosDocumento;
