@@ -18,4 +18,20 @@ Nesta aula, aprendemos a implementar a parte de cadastro do AluraDocs. Foi mostr
 
 Nesta aula do curso "WebSockets: implemente autenticação e avance no Socket.IO", aprendemos a cadastrar uma pessoa usuária no banco de dados MongoDB. Criamos uma nova coleção chamada "usuarios" no MongoDB Atlas e obtivemos acesso a ela no VSCode. Implementamos a função cadastrarUsuario() que insere um novo registro na coleção de usuários e adicionamos a verificação de duplicidade de usuários antes de realizar o cadastro. Por fim, implementamos o feedback para o usuário, exibindo mensagens de sucesso ou erro no cadastro.
 
-### Aula 01 -  - Video 5
+### Aula 01 - Protegendo as senhas - Video 5
+
+Nesta aula, foi identificado que as senhas dos usuários do AluraDocs estão desprotegidas e é necessário criptografá-las. Foi criada uma função chamada criarHashESalSenha() que recebe a senha digitada pelo usuário e gera um "sal" e uma "hash" para a senha. Essa função foi implementada no arquivo usuariosDb.js e utilizada no momento do cadastro do usuário, onde a senha é substituída pela "hash" e pelo "sal". Foram feitos testes para verificar se as senhas estão sendo criptografadas corretamente e os registros antigos com senhas desprotegidas foram excluídos. A próxima etapa será implementar a funcionalidade de login para os amigos da Juliana se cadastrarem no AluraDocs.
+
+### Aula 01 Conclussão - Nesta aula, você aprendeu como
+
+Cadastrar um novo usuário no banco de dados:
+
+Para implementar o sistema de usuários no Alura Docs, primeiro precisamos ser capazes de cadastrá-los. Para isso, obtemos o nome e a senha digitados no formulário de cadastro e enviamos ao servidor. No servidor, conseguimos guardar essas informações no banco de dados.
+Proteger as senhas dos usuários:
+
+Para fornecer uma maior proteção às senhas dos usuários, usamos funções do módulo crypto do NodeJS para criptografar essas informações. Para isso, utilizamos a função randomBytes para criar um novo “sal” e a função scryptSync para criar uma hash a partir do sal e da senha. Em seguida, armazenamos a hash e o sal no banco de dados, pois precisamos dessas duas informações para realizar a autenticação da senha posteriormente.
+
+## Aula 02 - Implementando Login
+
+### Aula 02 - Enviando dados de login - Video 1
+
