@@ -35,3 +35,34 @@ Para fornecer uma maior proteção às senhas dos usuários, usamos funções do
 
 ### Aula 02 - Enviando dados de login - Video 1
 
+Na aula "Implementando login", foi discutido o uso de WebSockets nas páginas de login e cadastro, mesmo que não seja necessário para comunicação bidirecional em tempo real. Foi mostrado como implementar a funcionalidade de login, utilizando o mesmo código do formulário de cadastro, com algumas alterações. Foi explicado como obter os dados do formulário e emitir a autenticação do usuário para o servidor. Também foi mencionado que é necessário autenticar o usuário no backend, utilizando as informações do usuário obtidas do banco de dados. Por fim, foi explicado como lidar com a promise retornada pela função de busca do usuário.
+
+### Aula 02 - Autenticando usuários - Video 2
+
+Nesta aula, foi implementada a funcionalidade de login. Os dados digitados no formulário foram capturados e exibidos no terminal integrado do VS Code. Em seguida, foi criada a função autenticarUsuario() para autenticar a senha do usuário. A função scryptSync() foi utilizada para criar uma hash de teste a partir da senha digitada, e a função timingSafeEqual() foi utilizada para comparar essa hash com a hash salva no banco de dados. O resultado da autenticação foi enviado para o front-end, onde foram exibidas mensagens de sucesso ou erro. Além disso, foi tratado o caso de usuário não encontrado e implementado o redirecionamento para a página inicial após o login bem-sucedido.
+
+### Aula 02 - Gerando um JWT - Video 3
+
+Nesta aula, aprendemos a implementar a autenticação de usuários no AluraDocs utilizando JWT. Geramos um token JWT no servidor assim que o usuário é autenticado, utilizando a biblioteca **jsonwebtoken**. Aprendemos a configurar o segredo do JWT utilizando a biblioteca **dotenv** e armazenando-o em uma variável de ambiente. Também corrigimos um erro relacionado ao payload do token, transformando-o em um objeto. Por fim, enviamos o token JWT para o front-end junto com o evento de autenticação bem-sucedida.
+
+### Aula 02 - Para saber mais: [lidando com CORS](https://cursos.alura.com.br/course/websockets-implemente-autenticacao-avance-socket-io/task/119950)
+
+Até agora na nossa aplicação, estamos utilizando o front-end e o back-end na mesma URL: http://localhost:3000. Isso porque o próprio servidor Node está disponibilizando as páginas HTML no navegador.
+
+E se estivéssemos lidando com front-end e back-end de forma mais separada? Por exemplo, se tivéssemos uma aplicação construída em React que rodasse na porta 5000, enquanto nosso servidor está rodando na porta 3000?
+
+Se você já se deparou com situações assim antes, talvez tenha pensado que iria lidar com [Cross-Origin Resource Sharing (CORS)](https://www.alura.com.br/artigos/como-resolver-erro-de-cross-origin-resource-sharing), e é exatamente isso! Vamos simular essa situação?...
+
+### Aula 02 Conclussão - Nesta aula, você aprendeu como
+
+Autenticar um usuário ao verificar a senha digitada no formulário de login:
+
+Para verificar se a senha digitada está correta, precisamos de algumas informações do usuário no banco de dados, que são: o sal e a hash criados no momento de cadastro. Ao combinar a senha digitada com o sal do banco de dados, verificamos se o resultado é igual à hash armazenada no banco de dados. Em caso positivo, o usuário é autenticado com sucesso.
+Gerar um JWT quando um usuário é autenticado com sucesso:
+
+O JWT (JSON Web Token) servirá como o crachá do usuário autenticado. No futuro, quando a pessoa for acessar áreas restritas do sistema, ela irá apenas apresentar seu crachá, ao invés de fornecer seu usuário e senha a cada nova tentativa de acesso.
+
+## Aula 03 - Controlando Acessos
+
+### Aula 03 - Guardando JWT nos cookies - Video 1
+

@@ -1,3 +1,4 @@
+"use strict"
 import { encontarUsuario,cadastrarUsuario } from "../db/usuariosDb.js";
 
 function registrarEventosCadastrar(socket, io){
