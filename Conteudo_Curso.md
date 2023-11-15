@@ -118,3 +118,35 @@ Fizemos uma lista local no Node.JS que registra qual usuário entrou em qual doc
 ## Aula 05 - Finalizandoa Aplicação
 
 ### Aula 05 - Eventos para clientes específicos - Video 1
+
+Nesta aula, aprendemos a tratar a entrada de usuários em um documento no AluraDocs. Foi introduzido o evento "disconnect" do Socket.IO, que é emitido sempre que um socket é desconectado. Aprendemos como utilizar esse evento para identificar quando um usuário sai de um documento e atualizar a lista de usuários conectados. Também foi explicado como registrar esse evento apenas para os sockets que entraram em um documento específico. Além disso, foi sugerido agrupar os ouvintes de outros eventos, como "texto_editor" e "excluir_documento", dentro do ouvinte do evento "selecionar_documento" para melhor organização do código.
+
+### Aula 05 - Atualizando saída na lista local - Video 2
+
+Nesta aula, aprendemos a detectar quando um usuário sai de um documento e a remover a conexão correspondente. Implementamos a função de remover conexão, que recebe como parâmetros o nome do documento e o nome do usuário. Utilizamos o método findIndex() para obter o índice da conexão a ser removida e o método splice() para remover a conexão da lista. Atualizamos a lista de usuários no front-end após remover a conexão, emitindo a lista atualizada para os clientes interessados. Identificamos a necessidade de permitir que o usuário entre em um documento em apenas uma aba por vez, deixando essa implementação para a próxima aula.
+
+### Aula 05 - Guardando informações no socket - Video 3
+
+Nesta aula, foi abordado o último caso a ser tratado no AluraDocs, que é quando um usuário entra em abas diferentes de um mesmo documento e o nome aparece duplicado na lista de usuários conectados. Para resolver esse problema, foi implementada a função encontrarConexao() que verifica se a conexão já existe antes de adicioná-la. Além disso, foi introduzido o uso da propriedade socket.data para guardar informações no próprio socket, evitando a remoção incorreta de conexões.
+
+- É possível armazenar em socket.data quaisquer dados desejados, para que eles possam ser resgatados posteriormente, conforme a necessidade.  
+No nosso caso, guardamos em socket.data o nome do usuário e do documento que ele entrou. Assim, quando o usuário sair, podemos remover a conexão correspondente da lista local de conexões.
+
+- As informações guardadas em socket.data são perdidas se o socket for desconectado do servidor.  
+Quando um cliente é desconectado do servidor, o socket criado entre eles deixa de existir, junto com todas as suas propriedades. Assim, faz sentido guardar em socket.data as informações que precisam ser utilizadas em uma única página, e apenas enquanto o cliente estiver conectado nela.
+
+- Os sockets no lado do back-end ainda possuem uma outra propriedade que tem a ver com a nossa situação, que é a socket.rooms. Ela pode ser utilizada em conjunto com o evento disconnecting para descobrirmos de qual sala um determinado socket está saindo.  
+Entretanto, essa propriedade retorna apenas o id do socket junto com o nome da sala que ele está saindo. Dessa forma, ainda precisaríamos recorrer à abordagem de guardar o id do socket na lista local de conexões. Por esse motivo, não vi necessidade de utilizar esse recurso no nosso caso, pois já tínhamos acesso ao id do socket dentro do evento disconnect.
+
+### Aula 05 Conclusão - Nesta aula, você aprendeu como
+
+Lidar com a saída de um usuário de um documento:
+
+Quando isso acontece, podemos utilizar o nome do usuário e do documento para remover a conexão correspondente da lista local de conexões. Assim, podemos enviar a lista atualizada de usuários conectados ao documento e manter a interface do front-end sempre atualizada com os dados do servidor.
+Guardar informações em socket.data:
+
+O Socket.IO disponibiliza essa propriedade para vincularmos informações a um determinado socket. Assim, podemos resgatar essas informações posteriormente, de acordo com nossa necessidade.
+
+### Aula 05 Conclusão - Video 4
+
+Nesta aula, aprendemos a aplicar o fluxo de cadastro, login e armazenamento de JWT na prática, controlar acessos utilizando middlewares do Socket.IO, controlar informações localmente através do uso da propriedade socket.data e criar uma lista local para controlar as conexões dos documentos.

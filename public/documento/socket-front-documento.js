@@ -20,6 +20,11 @@ function selecionarDocumento(dadosEntrada) {
   });
 }
 //---------------------------------------------------------
+socket.on("usuario_ja_no_documento", () => {
+  alert("O Documento já está aberto em outra guia!")
+  window.location.href = "/";
+});
+//---------------------------------------------------------
 socket.on("usuarios_no_documento", atualizarInterfaceUsuarios)
 //---------------------------------------------------------
 function emitirTextoEditor(dados) {
