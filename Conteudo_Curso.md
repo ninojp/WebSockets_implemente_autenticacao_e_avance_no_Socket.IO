@@ -66,3 +66,33 @@ O JWT (JSON Web Token) servirá como o crachá do usuário autenticado. No futur
 
 ### Aula 03 - Guardando JWT nos cookies - Video 1
 
+Nesta aula, aprendemos a gerar um token JWT para autenticar os usuários do AluraDocs e como armazenar esse token no front-end utilizando cookies. Criamos funções para definir, obter e remover cookies. Também implementamos um evento de clique no botão Logout que remove o cookie, exibe um alerta de sucesso e redireciona o usuário para a página de login.
+
+### Aula 03 - Middlewares do Socket.IO - Video 2
+
+Nesta aula, aprendemos a restringir áreas do AluraDocs utilizando middlewares. Utilizamos o arquivo "socket.back.js" para registrar um middleware que verifica se o cliente tem autorização para acessar o servidor. Ao passar um erro como parâmetro da função "next()", cortamos a conexão do socket com o servidor, negando o acesso. No front-end, capturamos esse erro e redirecionamos o usuário para a página de login. Também aprendemos a registrar mais de um middleware sequencialmente e a organizar os middlewares em um arquivo separado. Por fim, importamos a função "autorizarUsuario" de um arquivo externo e concedemos o acesso ao usuário. Na próxima aula, iremos implementar a autorização de acesso com base no tokenJwt.
+
+### Aula 03 - Autorizando usuários - Video 3
+
+Nesta aula, aprendemos sobre o uso de funções Middlewares para conceder ou negar o acesso de um usuário no servidor. Foi explicado como verificar o tokenJwt para decidir se o acesso será liberado ou negado. A transcrição também mostrou como enviar as informações do Jwt do front-end para o back-end, utilizando a função io. Em seguida, foi ensinado como capturar o tokenJwt no back-end e imprimir seu valor no terminal do VSCode. Foi mencionado o uso da biblioteca JSON Web Token para verificar a validade do token. Por fim, foi abordado o problema de registrar a função middleware para todas as páginas do sistema e a solução será apresentada na próxima aula.
+
+### Aula 03 - Utilizando namespaces - Video 4
+
+Nesta aula, aprendemos a utilizar namespaces para separar os clientes e aplicar middlewares específicos em cada um. Registramos um middleware no servidor e ajustamos o código para registrar o middleware no namespace "/usuarios". Também utilizamos o namespace "/usuarios" ao conectar o cliente na página principal e restringimos o acesso à página de documentos ao conectar o cliente no namespace "/usuarios".
+
+### Aula 03 Conclussão - Nesta aula, você aprendeu como
+
+Guardar o token JWT nos cookies do navegador:
+
+Quando o usuário é autenticado com sucesso no lado do servidor, enviamos de volta o token JWT para o cliente. Em seguida, do lado do cliente, guardamos o token JWT nos cookies do navegador. Assim, quando o usuário precisar entrar em alguma página restrita do Alura Docs futuramente, poderemos resgatar o token JWT armazenado no navegador e enviá-lo para o servidor, para que o usuário possa ser autorizado a acessar a página.
+Registrar middlewares no servidor:
+
+Um middleware é um intermediador entre o cliente e o servidor, e no caso do Socket.IO, é responsável por permitir ou negar a tentativa de conexão. Sendo assim, é o recurso ideal a ser utilizado para verificar a autenticidade de um usuário que deseja acessar uma área restrita de um sistema. Além disso, podemos registrar vários middlewares no servidor, e eles serão executados sequencialmente.
+Criar e utilizar namespaces para agrupar conexões:
+
+Os namespaces do Socket.IO permitem que as conexões possam ser agrupadas separadamente: cada namespace possui seus próprios eventos, salas e middlewares. Assim, somos capazes de agrupar as funcionalidades dos documentos em um namespace específico chamado usuarios, por exemplo, e registrar um middleware nesse namespace. Dessa forma, os clientes que tentarem acessar esse namespace irão passar pelo middleware registrado.
+
+## Aula 04 - Usuários Online
+
+### Aula 04 - Projeto da aula anterior - Video 1
+
