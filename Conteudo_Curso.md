@@ -94,5 +94,27 @@ Os namespaces do Socket.IO permitem que as conexões possam ser agrupadas separa
 
 ## Aula 04 - Usuários Online
 
-### Aula 04 - Projeto da aula anterior - Video 1
+### Aula 04 - Lidando com entrada de usuário - Video 1
 
+Nesta aula, finalizamos o ciclo de cadastro, login e controle de acesso dos usuários. Implementamos a funcionalidade de mostrar quem está em cada documento, utilizando o nome de usuário do token JWT. Criamos um middleware no servidor que verifica o token e emite um evento para o front-end com o payload do token. No front-end, escutamos esse evento e acessamos o nome do usuário. Em seguida, enviamos o nome do usuário juntamente com o nome do documento para o servidor, que trata essa informação e retorna o texto do documento. Verificamos que o nome do usuário é recebido com sucesso no servidor.
+
+### Aula 04 - Registrando conexões dos documentos - Video 2
+
+Nesta aula, aprendemos como enviar o nome do usuário conectado para outros clientes que também estão conectados em um determinado documento. Para isso, criamos uma lista no back-end que armazena as conexões dos usuários em cada documento. Implementamos a função adicionarConexao() que adiciona uma nova conexão à lista. Também criamos a função obterUsuariosDocumento() que retorna os usuários que estão em um determinado documento. Testamos a funcionalidade com dois navegadores diferentes e verificamos que a lista de usuários conectados é atualizada corretamente. Agora estamos prontos para enviar essa informação para o front-end quando solicitado.
+
+### Aula 04 - Atualizando usuários conectados - Video 3
+
+Nesta aula, aprendemos a registrar os usuários que estão entrando em um documento e exibir uma lista atualizada no terminal. Também vimos como enviar essa informação de volta para o front-end, atualizando a interface e colocando os nomes na lista de usuários conectados. Implementamos a função "atualizarInterfaceUsuarios" no front-end, que manipula o HTML e atualiza a lista de usuários conectados dinamicamente. Utilizamos o evento "usuarios_no_documento" para enviar essa informação para todos os usuários no documento. No entanto, há um problema de duplicação de entradas que será resolvido na próxima aula.
+
+### Aula 04 Conclussão - Nesta aula, você aprendeu como
+
+Retornar o payload do token para o cliente:
+
+Além de verificar a autenticidade do token JWT, o servidor é capaz de decodificá-lo e enviar seu payload de volta para o cliente, caso seja necessário. No nosso caso, na página de documento, enviamos de volta para o cliente um objeto com o nome do usuário. Assim, no front-end, podemos utilizar essa informação à vontade: podemos exibir o nome do usuário na tela, ou então, no nosso caso, emitir um evento de volta para o servidor, informando o nome do usuário que entrou no documento.
+Registrar conexões dos documentos no servidor:
+
+Fizemos uma lista local no Node.JS que registra qual usuário entrou em qual documento. Ao armazenar essas informações, podemos enviá-las de volta para novos usuários que entrarem em um determinado documento para, em seguida, atualizar a interface no front-end com a lista de usuários conectados no documento.
+
+## Aula 05 - Finalizandoa Aplicação
+
+### Aula 05 - Eventos para clientes específicos - Video 1
